@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.Objects;
 // -------------------------------------------------------------------------
 /**
  * Represents a Knight game piece.
@@ -35,9 +36,13 @@ public class Knight
      * @return ArrayList<String> a list of the possible moves
      */
     private ArrayList<String> calculateNorthMoves( ChessGameBoard board ){
+        return getStrings(board, 2, 4, 1, 2);
+    }
+
+    private ArrayList<String> getStrings(ChessGameBoard board, int i2, int i3, int i4, int i5) {
         ArrayList<String> moves = new ArrayList<String>();
-        for ( int i = 2; i >= -2; i -= 4 ){
-            for ( int j = 1; j >= -1; j -= 2 ){
+        for (int i = i2; i >= -i2; i -= i3){
+            for (int j = i4; j >= -i4; j -= i5){
                 if ( isOnScreen( pieceRow + i, pieceColumn + j )
                     && ( isEnemy( board, pieceRow + i, pieceColumn + j ) ||
                         board.getCell(
@@ -50,6 +55,7 @@ public class Knight
         }
         return moves;
     }
+
     /**
      * Calculates the moves of the knight in the south direction relative to the
      * location of the piece.
@@ -59,20 +65,7 @@ public class Knight
      * @return ArrayList<String> a list of the possible moves
      */
     private ArrayList<String> calculateSouthMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
-        for ( int i = 1; i >= -1; i -= 2 ){
-            for ( int j = 2; j >= -2; j -= 4 ){
-                if ( isOnScreen( pieceRow + i, pieceColumn + j )
-                    && ( isEnemy( board, pieceRow + i, pieceColumn + j ) ||
-                        board.getCell(
-                        pieceRow + i,
-                        pieceColumn + j )
-                        .getPieceOnSquare() == null ) ){
-                    moves.add( ( pieceRow + i ) + "," + ( pieceColumn + j ) );
-                }
-            }
-        }
-        return moves;
+        return getStrings(board, 1, 2, 2, 4);
     }
     /**
      * Calculates the possible moves for this Knight.
@@ -99,18 +92,18 @@ public class Knight
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKnight.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/WhiteKnight.gif"))
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackKnight.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/BlackKnight.gif"))
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/default-Unassigned.gif"))
             );            
         }
     }

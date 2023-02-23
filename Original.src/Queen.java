@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.Objects;
 // import java.awt.Color;
 // -------------------------------------------------------------------------
 /**
@@ -43,16 +44,7 @@ public class Queen
         ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
         ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
         ArrayList<String> westMoves = calculateWestMoves( board, 8 );
-        ArrayList<String> allMoves = new ArrayList<String>();
-        allMoves.addAll( northEastMoves );
-        allMoves.addAll( northWestMoves );
-        allMoves.addAll( southWestMoves );
-        allMoves.addAll( southEastMoves );
-        allMoves.addAll( northMoves );
-        allMoves.addAll( southMoves );
-        allMoves.addAll( westMoves );
-        allMoves.addAll( eastMoves );
-        return allMoves;
+        return King.getStrings(northEastMoves, northWestMoves, southEastMoves, southWestMoves, northMoves, southMoves, eastMoves, westMoves);
     }
     /**
      * Creates an icon for this piece depending on the piece's color.
@@ -63,18 +55,18 @@ public class Queen
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteQueen.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/WhiteQueen.gif"))
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackQueen.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/BlackQueen.gif"))
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/default-Unassigned.gif"))
             ); 
         }
     }

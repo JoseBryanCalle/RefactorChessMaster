@@ -24,10 +24,10 @@ public class ChessMenuBar
         for ( int i = 0; i < menuCategories.length; i++ ){
             JMenu currMenu = new JMenu( menuCategories[i] );
             String[] currMenuItemList = menuItemLists[i].split( "," );
-            for ( int j = 0; j < currMenuItemList.length; j++ ){
-                JMenuItem currItem = new JMenuItem( currMenuItemList[j] );
-                currItem.addActionListener( new MenuListener() );
-                currMenu.add( currItem );
+            for (String s : currMenuItemList) {
+                JMenuItem currItem = new JMenuItem(s);
+                currItem.addActionListener(new MenuListener());
+                currMenu.add(currItem);
             }
             this.add( currMenu );
         }
@@ -52,21 +52,12 @@ public class ChessMenuBar
         @Override
         public void actionPerformed( ActionEvent event ){
             String buttonName = ( (JMenuItem)event.getSource() ).getText();
-            if ( buttonName.equals( "About" ) ){
-                aboutHandler();
-            }
-            else if ( buttonName.equals( "New game/restart" ) ){
-                restartHandler();
-            }
-            else if ( buttonName.equals( "Toggle game log" ) ){
-                toggleGameLogHandler();
-            }
-            else if ( buttonName.equals( "Exit" ) ){
-                exitHandler();
-            }
-            else
-            {
-                toggleGraveyardHandler();
+            switch (buttonName) {
+                case "About" -> aboutHandler();
+                case "New game/restart" -> restartHandler();
+                case "Toggle game log" -> toggleGameLogHandler();
+                case "Exit" -> exitHandler();
+                default -> toggleGraveyardHandler();
             }
         }
     }
@@ -99,6 +90,7 @@ public class ChessMenuBar
             possibleFrame = possibleFrame.getParent();
         }
         JFrame frame = (JFrame)possibleFrame;
+        assert frame != null;
         frame.setVisible( false );
         frame.dispose();
     }

@@ -11,24 +11,23 @@ import javax.swing.*;
  */
 public class ChessPanel
     extends JPanel{
-    private ChessMenuBar    menuBar;
-    private ChessGameBoard  gameBoard;
-    private ChessGameLog    gameLog;
-    private ChessGraveyard  playerOneGraveyard;
-    private ChessGraveyard  playerTwoGraveyard;
-    private ChessGameEngine gameEngine;
+    private final ChessGameBoard  gameBoard;
+    private final ChessGameLog    gameLog;
+    private final ChessGraveyard  playerOneGraveyard;
+    private final ChessGraveyard  playerTwoGraveyard;
+    private final ChessGameEngine gameEngine;
     // ----------------------------------------------------------
     /**
      * Create a new ChessPanel object.
      */
     public ChessPanel(){
         this.setLayout( new BorderLayout() );
-        menuBar = new ChessMenuBar();
+        ChessMenuBar menuBar = new ChessMenuBar();
         gameBoard = new ChessGameBoard();
         gameLog = new ChessGameLog();
         playerOneGraveyard = new ChessGraveyard( "Player 1's graveyard" );
         playerTwoGraveyard = new ChessGraveyard( "Player 2's graveyard" );
-        this.add( menuBar, BorderLayout.NORTH );
+        this.add(menuBar, BorderLayout.NORTH );
         this.add( gameBoard, BorderLayout.CENTER );
         this.add( gameLog, BorderLayout.SOUTH );
         this.add( playerOneGraveyard, BorderLayout.WEST );
