@@ -1,5 +1,6 @@
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import java.util.Objects;
 // -------------------------------------------------------------------------
 /**
  * Represents a Rook game piece.
@@ -55,18 +56,18 @@ public class Rook
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteRook.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/WhiteRook.gif"))
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackRook.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/BlackRook.gif"))
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
+                    Objects.requireNonNull(getClass().getResource("chessImages/default-Unassigned.gif"))
             );        
         }
     }
