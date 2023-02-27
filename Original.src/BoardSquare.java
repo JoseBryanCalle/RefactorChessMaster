@@ -11,8 +11,8 @@ import javax.swing.JPanel;
  */
 public class BoardSquare
     extends JPanel{
-    private int            row;
-    private int            col;
+    private final int            row;
+    private final int            col;
     private ChessGamePiece piece;
     private JLabel         imageLabel;
     // ----------------------------------------------------------

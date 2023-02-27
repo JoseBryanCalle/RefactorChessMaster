@@ -53,11 +53,11 @@ public class ChessMenuBar
         public void actionPerformed( ActionEvent event ){
             String buttonName = ( (JMenuItem)event.getSource() ).getText();
             switch (buttonName) {
-                case "About" -> aboutHandler();
-                case "New game/restart" -> restartHandler();
-                case "Toggle game log" -> toggleGameLogHandler();
-                case "Exit" -> exitHandler();
-                default -> toggleGraveyardHandler();
+                case "About" : aboutHandler();
+                case "New game/restart" : restartHandler();
+                case "Toggle game log" : toggleGameLogHandler();
+                case "Exit" : exitHandler();
+                default : toggleGraveyardHandler();
             }
         }
     }
