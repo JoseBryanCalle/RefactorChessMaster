@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class ChessGameLog
     extends JScrollPane{
-    private final JTextArea textArea;
+    private JTextArea textArea;
     // ----------------------------------------------------------
     /**
      * Create a new ChessGameLog object.

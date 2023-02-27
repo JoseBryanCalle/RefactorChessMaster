@@ -16,7 +16,7 @@ public class ChessGameEngine{
     private ChessGamePiece currentPiece;
     private boolean        firstClick;
     private int            currentPlayer;
-    private final ChessGameBoard board;
+    private ChessGameBoard board;
     private King           king1;
     private King           king2;
     // ----------------------------------------------------------
@@ -92,14 +92,14 @@ public class ChessGameEngine{
         }
         else
         {
-            return true;
+            return false;
         }
         for ( ChessGamePiece currPiece : pieces ){
             if ( currPiece.hasLegalMoves( board ) ){
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
     /**
      * Checks if the last-clicked piece is a valid piece (i.e. if it is
@@ -113,12 +113,18 @@ public class ChessGameEngine{
         }
         if ( currentPlayer == 2 ) // black player
         {
-            return currentPiece.getColorOfPiece() == ChessGamePiece.BLACK;
+            if ( currentPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
+                return true;
+            }
+            return false;
         }
         else
         // white player
         {
-            return currentPiece.getColorOfPiece() == ChessGamePiece.WHITE;
+            if ( currentPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
+                return true;
+            }
+            return false;
         }
     }
     /**
@@ -207,18 +213,18 @@ public class ChessGameEngine{
      *         still valid game.
      */
     public int determineGameLost(){
-        if ( king1.isChecked( board ) && playerHasLegalMoves(1)) // player 1
+        if ( king1.isChecked( board ) && !playerHasLegalMoves( 1 ) ) // player 1
         // loss
         {
             return 1;
         }
-        if ( king2.isChecked( board ) && playerHasLegalMoves(2)) // player 2
+        if ( king2.isChecked( board ) && !playerHasLegalMoves( 2 ) ) // player 2
         // loss
         {
             return 2;
         }
-        if ( ( !king1.isChecked( board ) && playerHasLegalMoves(1))
-            || ( !king2.isChecked( board ) && playerHasLegalMoves(2))
+        if ( ( !king1.isChecked( board ) && !playerHasLegalMoves( 1 ) )
+            || ( !king2.isChecked( board ) && !playerHasLegalMoves( 2 ) )
             || ( board.getAllWhitePieces().size() == 1 &&
                 board.getAllBlackPieces().size() == 1 ) ) // stalemate
         {

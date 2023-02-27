@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 public class ChessGraveyard
     extends JPanel{
-    private final String title;
+    private String title;
     // ----------------------------------------------------------
     /**
      * Create a new ChessGraveyard object.

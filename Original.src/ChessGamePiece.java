@@ -14,9 +14,9 @@ import javax.swing.ImageIcon;
  * @version 2010.11.17
  */
 public abstract class ChessGamePiece{
-    private final boolean             skipMoveGeneration;
-    private final int                 pieceColor;
-    private final ImageIcon           pieceImage;
+    private boolean             skipMoveGeneration;
+    private int                 pieceColor;
+    private ImageIcon           pieceImage;
     /**
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
@@ -676,7 +676,13 @@ public abstract class ChessGamePiece{
             return false;
         }
         if ( this.getColorOfPiece() == ChessGamePiece.WHITE ){
-            return enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK;
+            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
