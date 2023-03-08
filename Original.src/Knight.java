@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Knight extends ChessGamePiece {
 
+
     public Knight(ChessGameBoard board, int row, int col, int color ){
         super( board, row, col, color );
     }

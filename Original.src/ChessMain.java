@@ -11,6 +11,9 @@ public class ChessMain{
         cge.enlazarObservador(cgl);
         cge.procesoEscribir();
 
+        Pieza pieza = Factory.construir("King");
+        assert pieza != null;
+
         JFrame frame = new JFrame( "YetAnotherChessGame 1.0" );
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.getContentPane().add( new ChessPanel() );

@@ -425,19 +425,13 @@ public abstract class ChessGamePiece{
         }
         else
         {
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE;
         }
     }
     // ----------------------------------------------------------
 
     public ArrayList<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
-        ArrayList<ChessGamePiece> attackers = new ArrayList<ChessGamePiece>();
+        ArrayList<ChessGamePiece> attackers = new ArrayList<>();
         int enemyColor =
             ( this.getColorOfPiece() == ChessGamePiece.BLACK )
                 ? ChessGamePiece.WHITE

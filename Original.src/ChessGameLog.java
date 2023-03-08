@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.util.Date;
 
-public class ChessGameLog extends JScrollPane implements Observador{
+public class ChessGameLog extends JScrollPane implements Observador, Pieza{
 
     private static JTextArea textArea = null;
 
@@ -55,4 +55,22 @@ public class ChessGameLog extends JScrollPane implements Observador{
         return textArea.getText().substring( indexOfLastNewLine + 1 );
     }
 
+    @Override
+    public Pieza avanzar() {
+        textArea.setText("La pieza ha avanzado");
+        return null;
+    }
+
+    @Override
+    public Pieza retroceder() {
+        textArea.setText("La pieza ha sido retrocedida");
+        return null;
+    }
+
+    @Override
+    public String nombre() {
+        String nombrePieza = "King";
+        textArea.setText(nombrePieza);
+        return nombrePieza;
+    }
 }
